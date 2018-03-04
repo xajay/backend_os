@@ -11,6 +11,11 @@ pipeline {
         sh 'mvn fabric8:deploy'
       }
     }
+    stage('promoto to QA') {
+      steps {
+        sh 'oc tag todo/todolist:latest todo/todolist:promotoToQA'
+      }
+    }
   }
   environment {
     maven = 'maven'
