@@ -9,6 +9,7 @@ openshift.withCluster() {
   env.STAGE2 = "${projectBase}-stage"
   env.STAGE3 = "${projectBase}-prod"
   echo "POM ${POM_FILE}" 
+  echo "STAGE0 ${env.STAGE0}"
 }
 
 pipeline {
