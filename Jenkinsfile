@@ -8,6 +8,7 @@ openshift.withCluster() {
   env.STAGE1 = "${projectBase}-dev"
   env.STAGE2 = "${projectBase}-stage"
   env.STAGE3 = "${projectBase}-prod"
+  echo "POM ${POM_FILE}" 
 }
 
 pipeline {
@@ -16,9 +17,7 @@ pipeline {
   // All the stages and steps of this Pipeline will be executed on this Pod
   // After Pipeline completes the Pod is killed so every run will have clean
   // workspace
-  agent {
-    label 'maven'
-  }
+  
 
   // Pipeline Stages start here
   // Requeres at least one stage
@@ -27,13 +26,13 @@ pipeline {
     // Checkout source code
     // This is required as Pipeline code is originally checkedout to
     // Jenkins Master but this will also pull this same code to this slave
-    stage('Git Checkout') {
-      steps {
-        // Turn off Git's SSL cert check, uncomment if needed
-        // sh 'git config --global http.sslVerify false'
-        git url: "${APPLICATION_SOURCE_REPO}"
-      }
-    }
+  //  stage('Git Checkout') {
+  //    steps {
+  //      // Turn off Git's SSL cert check, uncomment if needed
+  //      // sh 'git config --global http.sslVerify false'
+  //      git url: "${APPLICATION_SOURCE_REPO}"
+  //    }
+  //  }
 
     // Run Maven build, skipping tests
     stage('Build'){
