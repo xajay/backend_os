@@ -85,6 +85,7 @@ pipeline {
             openshift.tag("${env.STAGE0}/${env.APP_NAME}:latest", "${env.STAGE1}/${env.APP_NAME}:latest")
           }
         }
+		echo "after promote from Build to Dev"
       }
     }
 
