@@ -47,7 +47,7 @@ pipeline {
     // Run Maven unit tests
     stage('Unit Test'){
       steps {
-        sh "mvn test -f ${POM_FILE}"
+        sh "mvn test -f ${POM_FILE}" 
       }
     }
 
